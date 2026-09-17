@@ -1,0 +1,92 @@
+# OPIM 5512 Lab 1 Report
+## Weather and Electricity Demand
+
+### Executive Summary
+
+This analysis examines hourly weather conditions in Hartford, Connecticut and hourly New England electricity demand from July 20 through August 19, 2026.
+
+The datasets contained 743 weather observations and 744 electricity-demand observations. After joining the datasets by hour, 743 matched hourly records were available for analysis.
+
+During the study period, Hartford experienced 36 hours with temperatures above 85°F, with a maximum temperature of 91°F. New England electricity demand exceeded 20,000 MW during 28 hours, with peak demand reaching 23,677.2 MW.
+
+The correlation between hourly temperature and electricity demand was 0.566, indicating a moderate positive relationship. In general, higher temperatures during this period tended to occur with higher electricity demand, although correlation alone does not establish that temperature caused the change in electricity consumption.
+
+---
+
+## Finding 1 — Hartford experienced a limited number of very hot hours
+
+The Hartford weather dataset contained 743 hourly observations. Of these, 36 hours had temperatures above 85°F, representing approximately 4.8% of the observed hours.
+
+The maximum recorded temperature during the period was 91°F.
+
+The temperature histogram shows that most observations were concentrated below the extreme upper end of the temperature range, while temperatures above 85°F occurred relatively infrequently.
+
+![Hourly Hartford temperature](images/weather_line.png)
+
+![Hartford temperature distribution](images/weather_hist.png)
+
+**Interpretation:**  
+Although the month included periods of high temperatures, temperatures above 85°F represented a relatively small portion of all hourly observations.
+
+---
+
+## Finding 2 — Electricity demand exceeded 20,000 MW during 28 hours
+
+The electricity-demand dataset contained 744 hourly observations. New England system demand exceeded 20,000 MW during 28 hours, or approximately 3.8% of the observed period.
+
+The highest hourly electricity demand was 23,677.2 MW.
+
+The demand time-series plot shows noticeable peaks during the month, while the histogram shows that extremely high-demand hours occurred much less frequently than typical demand levels.
+
+![Hourly New England electricity demand](images/demand_line.png)
+
+![New England electricity demand distribution](images/demand_hist.png)
+
+**Interpretation:**  
+Peak electricity demand was concentrated within a relatively small number of hours rather than being sustained throughout the entire month.
+
+---
+
+## Finding 3 — Temperature and electricity demand show a moderate positive relationship
+
+After merging the weather and demand datasets on the hourly timestamp, 743 observations matched successfully.
+
+The Pearson correlation between Hartford air temperature and New England electricity demand was:
+
+**r = 0.566**
+
+This represents a moderate positive relationship. During this study period, hours with higher temperatures generally tended to have higher electricity demand.
+
+This relationship is consistent with the possibility that cooling requirements, such as air-conditioning use, contribute to increased electricity demand during hotter periods.
+
+However, the correlation should not be interpreted as proof that temperature alone caused electricity demand to increase. Electricity consumption may also be influenced by time of day, day of week, commercial activity, humidity, holidays, and other factors.
+
+---
+
+## Data Quality and Limitations
+
+There were 744 demand observations but only 743 weather observations, resulting in 743 matched records after joining the datasets. Therefore, one demand hour did not have a corresponding Hartford weather observation.
+
+The analysis also uses weather from the Hartford airport as a representation of weather conditions associated with electricity demand across New England. Hartford conditions may not represent weather throughout the entire New England region.
+
+In addition, this analysis covers only approximately one month of summer data. Relationships observed during this period may differ during other seasons or across a longer time horizon.
+
+Finally, correlation measures association rather than causation. Additional variables and statistical analysis would be required before concluding that temperature directly causes changes in regional electricity demand.
+
+---
+
+## Next Steps
+
+A more complete analysis could:
+
+1. Analyze a longer period covering multiple seasons and years.
+2. Add humidity or dew point to determine whether heat and humidity together better explain electricity demand.
+3. Include hour-of-day and day-of-week variables to account for normal electricity-consumption patterns.
+4. Compare weather observations from multiple New England locations instead of relying only on Hartford.
+5. Build a regression or forecasting model to quantify how weather and calendar variables relate to electricity demand.
+
+---
+
+## Solo Lab Note
+
+I completed this lab individually because I was not present for the paired lab session. I followed the documented solo GitHub workflow, using separate `dev-weather`, `dev-demand`, and `report` branches and pull requests while setting required approvals to 0 for the single-user workflow.
